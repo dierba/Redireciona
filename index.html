@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionando para o Grupo...</title>
+    <meta http-equiv="refresh" content="0; url=whatsapp://chat?code=SEU_CODIGO_DE_CONVITE_AQUI">
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 40px; background-color: #f0f2f5; }
+        p { font-size: 18px; color: #333; }
+        a { color: #007bff; }
+    </style>
+</head>
+<body>
+
+    <p>Estamos te redirecionando para o grupo no WhatsApp...</p>
+    <p>Se nada acontecer em alguns segundos, <a id="fallback-link" href="#">clique aqui para tentar novamente</a>.</p>
+
+    <script>
+        // --- IMPORTANTE: Altere a linha abaixo! ---
+        // Pegue o link do seu grupo (ex: https://chat.whatsapp.com/ABC123XYZ)
+        // e copie APENAS a parte final (o código).
+        const codigoDoConvite = "KSND2D1HkUM8uQ97ZcKaR6"; 
+        
+        // Monta os dois tipos de link
+        const linkDiretoApp = "whatsapp://chat?code=" + codigoDoConvite;
+        const linkWeb = "https://chat.whatsapp.com/" + codigoDoConvite;
+
+        // Define o link de fallback no HTML
+        document.getElementById("fallback-link").href = linkWeb;
+
+        // Tenta abrir o link direto no app
+        window.location.href = linkDiretoApp;
+
+        // Define um tempo de espera (fallback). Se após 2.5 segundos
+        // o usuário ainda estiver nesta página, significa que o app não abriu.
+        // Então, redirecionamos para o link web padrão.
+        setTimeout(function () {
+            window.location.href = linkWeb;
+        }, 2500); // 2.5 segundos
+    </script>
+
+</body>
+</html>
